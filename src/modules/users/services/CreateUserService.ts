@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
-import Users from '../infra/entities/Users';
+import AppError from '@shared/errors/AppError';
+import Users from '@modules/users/infra/entities/Users';
 
 interface IUserInfoDTO {
   email: string;

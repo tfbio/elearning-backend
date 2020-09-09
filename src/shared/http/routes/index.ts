@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import usersRouter from '../../../modules/users/infra/routes/courses.routes';
+import usersRouter from '@modules/users/infra/routes/users.routes';
 
 const routes = Router();
 
