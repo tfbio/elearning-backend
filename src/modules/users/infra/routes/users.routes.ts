@@ -1,5 +1,10 @@
 import { Router } from 'express';
 
-const coursesRouter = Router();
+import UsersController from '@modules/users/infra/controllers/UsersController';
 
-export default coursesRouter;
+const usersRouter = Router();
+const usersController = new UsersController();
+
+usersRouter.get('/users', usersController.create);
+
+export default usersRouter;
