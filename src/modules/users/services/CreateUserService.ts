@@ -1,5 +1,4 @@
 import { getRepository } from 'typeorm';
-import AppError from '@shared/errors/AppError';
 import Users from '@modules/users/infra/entities/Users';
 
 interface IUserInfoDTO {
@@ -9,12 +8,18 @@ interface IUserInfoDTO {
 }
 
 class CreateUserService {
-  public async execute({ email, name, password }: IUserInfoDTO): Promise<void> {
+  public async execute({
+    email,
+    name,
+    password,
+  }: IUserInfoDTO): Promise<Users> {
     const usersRepository = getRepository(Users);
     // some validation here
 
     const newUser = usersRepository.create({ email, name, password });
     await usersRepository.save(newUser);
+
+    return newUser;
   }
 }
 
