@@ -6,19 +6,24 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('courses')
-class Courses {
+@Entity('lessons')
+class Lessons {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
   name: string;
 
-  @Column()
-  overview: string;
+  @Column('int')
+  lenght: number;
 
   @Column()
-  image: string;
+  description: string;
+
+  @Column()
+  video_id: string;
+
+  course_id: string;
 
   @CreateDateColumn()
   created_at: string;
@@ -27,4 +32,4 @@ class Courses {
   updated_at: string;
 }
 
-export default Courses;
+export default Lessons;
