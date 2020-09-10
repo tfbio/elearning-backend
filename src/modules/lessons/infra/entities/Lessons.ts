@@ -4,7 +4,11 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+
+import Courses from '@modules/courses/infra/entities/Courses';
 
 @Entity('lessons')
 class Lessons {
@@ -23,7 +27,12 @@ class Lessons {
   @Column()
   video_id: string;
 
+  @Column()
   course_id: string;
+
+  @ManyToOne(() => Courses)
+  @JoinColumn({ name: 'course_id' })
+  course: Courses;
 
   @CreateDateColumn()
   created_at: string;
