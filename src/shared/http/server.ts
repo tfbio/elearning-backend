@@ -1,7 +1,10 @@
 import express, { Request, Response, NextFunction } from 'express';
 
+import createConnection from '@shared/typeorm';
 import AppError from '../errors/AppError';
 import routes from './routes';
+
+createConnection();
 
 const app = express();
 app.use(express.json());
