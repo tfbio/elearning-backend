@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 
 import createConnection from '@shared/typeorm';
+import session from 'express-session';
 import AppError from '../errors/AppError';
 import routes from './routes';
 
@@ -8,6 +9,14 @@ createConnection();
 
 const app = express();
 app.use(express.json());
+app.use(
+  session({
+    secret: 'iy98hcbh489n38984y4h498',
+    resave: true,
+    saveUninitialized: false,
+  }),
+);
+
 app.use(routes);
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
