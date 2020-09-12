@@ -1,19 +1,29 @@
-import { getRepository } from 'typeorm';
+import { inject, injectable } from 'tsyringe';
 import Courses from '@modules/infra/entities/Courses';
 import ICreateCourseDTO from '../infra/DTOs/ICreateCourseDTO';
+import ICoursesRepository from '../repositories/interfaces/ICoursesRepository';
 
+@injectable()
 class CreateCourseService {
+  constructor(
+    @inject('CoursesRepository')
+    private coursesRepository: ICoursesRepository,
+  ) {}
+
   public async execute({
     name,
     image,
     overview,
   }: ICreateCourseDTO): Promise<Courses> {
-    const coursesRepository = getRepository(Courses);
     // validation here
-    const newCourse = coursesRepository.create({ name, image, overview });
-    await coursesRepository.save(newCourse);
 
-    return newCourse;
+    const course = await this.coursesRepository.create({
+      name,
+      image,
+      overview,
+    });
+
+    return course;
   }
 }
 
