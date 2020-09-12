@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import UsersController from '@modules/users/infra/controllers/UsersController';
-import SessionController from '@modules/users/infra/controllers/SessionController';
+import UsersController from '@modules/infra/controllers/UsersController';
+import SessionController from '@modules/infra/controllers/SessionController';
 
 const usersRouter = Router();
 const usersController = new UsersController();

@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import Users from '@modules/users/infra/entities/Users';
+import Users from '@modules/infra/entities/Users';
 
 import { sign } from 'jsonwebtoken';
 import AppError from '@shared/errors/AppError';

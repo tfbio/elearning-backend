@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 
-import createConnection from '@shared/typeorm';
+import createConnection from '@shared/infra/typeorm';
 import session from 'express-session';
 import AppError from '../errors/AppError';
 import routes from './routes';

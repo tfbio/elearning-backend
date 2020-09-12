@@ -1,4 +1,4 @@
-import Courses from '@modules/courses/infra/entities/Courses';
+import Courses from '@modules/infra/entities/Courses';
 import { uuid } from 'uuidv4';
 
 interface ICourseInfoDTO {

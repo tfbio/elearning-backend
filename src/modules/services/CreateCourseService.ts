@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import Courses from '@modules/courses/infra/entities/Courses';
+import Courses from '@modules/infra/entities/Courses';
 
 interface ICourseInfoDTO {
   name: string;

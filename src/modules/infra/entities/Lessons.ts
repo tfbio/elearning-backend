@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import Courses from '@modules/courses/infra/entities/Courses';
+import Courses from '@modules/infra/entities/Courses';
 
 @Entity('lessons')
 class Lessons {

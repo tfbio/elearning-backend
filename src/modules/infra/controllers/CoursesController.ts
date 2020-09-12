@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import CreateCourseService from '@modules/courses/services/CreateCourseService';
+import CreateCourseService from '@modules/services/CreateCourseService';
 
 class CoursesController {
   public async create(request: Request, response: Response): Promise<Response> {
