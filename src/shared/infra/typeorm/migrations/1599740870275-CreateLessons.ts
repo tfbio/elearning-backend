@@ -18,7 +18,7 @@ export default class CreateLessons1599740870275 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'lenght',
+            name: 'length',
             type: 'int',
           },
           {

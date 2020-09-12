@@ -19,7 +19,7 @@ class Lessons {
   name: string;
 
   @Column('int')
-  lenght: number;
+  length: number;
 
   @Column()
   description: string;
