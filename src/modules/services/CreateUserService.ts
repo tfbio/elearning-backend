@@ -1,25 +1,25 @@
-import { getRepository } from 'typeorm';
+import { inject, injectable } from 'tsyringe';
 import Users from '@modules/infra/entities/Users';
+import IUsersRepository from '../repositories/interfaces/IUsersRepository';
+import ICreateUserDTO from '../infra/DTOs/ICreateUserDTO';
 
-interface IUserInfoDTO {
-  email: string;
-  name: string;
-  password: string;
-}
-
+@injectable()
 class CreateUserService {
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
+  ) {}
+
   public async execute({
     email,
     name,
     password,
-  }: IUserInfoDTO): Promise<Users> {
-    const usersRepository = getRepository(Users);
+  }: ICreateUserDTO): Promise<Users> {
     // some validation here
 
-    const newUser = usersRepository.create({ email, name, password });
-    await usersRepository.save(newUser);
+    const user = await this.usersRepository.create({ email, name, password });
 
-    return newUser;
+    return user;
   }
 }
 
