@@ -1,18 +1,19 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 import CreateCourseService from '@modules/services/CreateCourseService';
 
 class CoursesController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, image, overview } = request.body;
-    const createCourse = new CreateCourseService();
+    const createCourse = container.resolve(CreateCourseService);
 
-    const newCourse = await createCourse.execute({
+    const course = await createCourse.execute({
       name,
       image,
       overview,
     });
 
-    return response.status(200).json(newCourse);
+    return response.status(200).json(course);
   }
 }
 
