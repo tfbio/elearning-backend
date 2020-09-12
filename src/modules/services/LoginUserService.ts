@@ -1,24 +1,24 @@
-import { getRepository } from 'typeorm';
-import Users from '@modules/infra/entities/Users';
-
+import { injectable, inject } from 'tsyringe';
 import { sign } from 'jsonwebtoken';
-import AppError from '@shared/errors/AppError';
 
-interface ILoginInfoDTO {
-  email: string;
-  password: string;
-}
+import AppError from '@shared/errors/AppError';
+import ILoginUserDTO from '@modules/infra/DTOs/ILoginUserDTO';
+import IUsersRepository from '@modules/repositories/interfaces/IUsersRepository';
 
 interface IResponse {
   user_id: string;
   token: string;
 }
-
+@injectable()
 class LoginUserService {
-  public async execute({ email, password }: ILoginInfoDTO): Promise<IResponse> {
-    const usersRepository = getRepository(Users);
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
+  ) {}
 
-    const user = await usersRepository.findOne({ email });
+  public async execute({ email, password }: ILoginUserDTO): Promise<IResponse> {
+    const user = await this.usersRepository.findByEmail(email);
+
     if (!user) {
       throw new AppError(400, 'User does not exists.');
     }
