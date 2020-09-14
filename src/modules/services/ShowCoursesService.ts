@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { injectable, inject } from 'tsyringe';
 
 import Courses from '@modules/infra/entities/Courses';

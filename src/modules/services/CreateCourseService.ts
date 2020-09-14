@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { inject, injectable } from 'tsyringe';
 import Courses from '@modules/infra/entities/Courses';
 import ICreateCourseDTO from '../infra/DTOs/ICreateCourseDTO';

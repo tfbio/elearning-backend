@@ -25,6 +25,12 @@ class CoursesRepository implements ICoursesRepository {
     await this.typeOrmRepository.save(course);
   }
 
+  public async findCourse(name: string): Promise<Courses | undefined> {
+    const course = await this.typeOrmRepository.findOne({ name });
+
+    return course;
+  }
+
   public async findAll(): Promise<Courses[]> {
     const courses = await this.typeOrmRepository.find();
 

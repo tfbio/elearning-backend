@@ -1,10 +1,13 @@
 import CreateCourseService from '@modules/services/CreateCourseService';
+import FakeCoursesRepository from './fakes/FakeCoursesRepository';
 
 let createCourseService: CreateCourseService;
+let fakeCoursesRepository: FakeCoursesRepository;
 
 describe('CreateCourses', () => {
   beforeEach(() => {
-    createCourseService = new CreateCourseService();
+    fakeCoursesRepository = new FakeCoursesRepository();
+    createCourseService = new CreateCourseService(fakeCoursesRepository);
   });
 
   it('should be able to create a new course', async () => {
