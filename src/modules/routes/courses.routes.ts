@@ -9,5 +9,6 @@ const coursesController = new CoursesController();
 
 coursesRouter.get('/', coursesController.index);
 coursesRouter.post('/', coursesController.create);
+coursesRouter.put('/:course_id', coursesController.put);
 
 export default coursesRouter;

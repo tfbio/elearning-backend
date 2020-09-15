@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 
 import CreateCourseService from '@modules/services/CreateCourseService';
 import ShowCoursesService from '@modules/services/ShowCoursesService';
+import UpdateCoursesService from '@modules/services/UpdateCourseService';
 
 class CoursesController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -21,6 +22,16 @@ class CoursesController {
       image,
       overview,
     });
+
+    return response.status(200).json(course);
+  }
+
+  public async put(request: Request, response: Response): Promise<Response> {
+    const { course_id } = request.params;
+    const { overview } = request.body;
+
+    const updateCourse = container.resolve(UpdateCoursesService);
+    const course = await updateCourse.execute({ course_id, overview });
 
     return response.status(200).json(course);
   }
