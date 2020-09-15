@@ -1,12 +1,7 @@
+import ICreateCourseDTO from '@modules/infra/DTOs/ICreateCourseDTO';
 import Courses from '@modules/infra/entities/Courses';
 import ICousersRepository from '@modules/repositories/interfaces/ICoursesRepository';
 import { v4 } from 'uuid';
-
-interface ICourseInfoDTO {
-  name: string;
-  image: string;
-  overview: string;
-}
 
 class FakeCoursesRepository implements ICousersRepository {
   private database: Courses[] = [];
@@ -15,7 +10,7 @@ class FakeCoursesRepository implements ICousersRepository {
     name,
     image,
     overview,
-  }: ICourseInfoDTO): Promise<Courses> {
+  }: ICreateCourseDTO): Promise<Courses> {
     const course = new Courses();
     Object.assign(course, { id: v4(), name, image, overview });
 

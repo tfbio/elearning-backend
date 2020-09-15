@@ -2,6 +2,7 @@ import 'reflect-metadata';
 
 import { inject, injectable } from 'tsyringe';
 import Courses from '@modules/infra/entities/Courses';
+import AppError from '@shared/errors/AppError';
 import ICreateCourseDTO from '../infra/DTOs/ICreateCourseDTO';
 import ICoursesRepository from '../repositories/interfaces/ICoursesRepository';
 
@@ -17,7 +18,11 @@ class CreateCourseService {
     image,
     overview,
   }: ICreateCourseDTO): Promise<Courses> {
-    // validation here
+    const courseVerify = await this.coursesRepository.findCourse(name);
+
+    if (courseVerify) {
+      throw new AppError(400, 'Course  with this name is already registered');
+    }
 
     const course = await this.coursesRepository.create({
       name,

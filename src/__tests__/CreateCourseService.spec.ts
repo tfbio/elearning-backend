@@ -1,4 +1,5 @@
 import CreateCourseService from '@modules/services/CreateCourseService';
+import AppError from '@shared/errors/AppError';
 import FakeCoursesRepository from './fakes/FakeCoursesRepository';
 
 let createCourseService: CreateCourseService;
@@ -18,5 +19,21 @@ describe('CreateCourses', () => {
     });
 
     expect(newCourse).toHaveProperty('id');
+  });
+
+  it('should not be able to create two courses with same name', async () => {
+    await createCourseService.execute({
+      name: 'course',
+      image: 'image path',
+      overview: 'new course descrip',
+    });
+
+    await expect(
+      createCourseService.execute({
+        name: 'course',
+        image: 'image path',
+        overview: 'new course descrip',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });
