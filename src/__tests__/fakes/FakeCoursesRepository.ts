@@ -14,11 +14,16 @@ class FakeCoursesRepository implements ICousersRepository {
     const course = new Courses();
     Object.assign(course, { id: v4(), name, image, overview });
 
+    this.database.push(course);
     return course;
   }
 
   public async save(course: Courses): Promise<void> {
-    this.database.push(course);
+    const courseIndex = this.database.findIndex(
+      courseFound => courseFound.id === course.id,
+    );
+
+    this.database[courseIndex] = course;
   }
 
   public async findCourse(name: string): Promise<Courses | undefined> {

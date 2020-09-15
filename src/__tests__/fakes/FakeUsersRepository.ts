@@ -11,14 +11,19 @@ class FakeUsersRepository implements IUsersRepository {
     email,
     password,
   }: ICreateUserDTO): Promise<Users> {
-    const course = new Users();
-    Object.assign(course, { id: v4(), name, email, password });
+    const user = new Users();
+    Object.assign(user, { id: v4(), name, email, password });
 
-    return course;
+    this.database.push(user);
+    return user;
   }
 
-  public async save(course: Users): Promise<void> {
-    this.database.push(course);
+  public async save(user: Users): Promise<void> {
+    const userIndex = this.database.findIndex(
+      userFound => userFound.id === user.id,
+    );
+
+    this.database[userIndex] = user;
   }
 
   public async findByEmail(email: string): Promise<Users | undefined> {
