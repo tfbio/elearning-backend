@@ -2,6 +2,7 @@ import 'reflect-metadata';
 
 import { inject, injectable } from 'tsyringe';
 import Users from '@modules/infra/entities/Users';
+import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/interfaces/IUsersRepository';
 import ICreateUserDTO from '../infra/DTOs/ICreateUserDTO';
 
@@ -17,7 +18,10 @@ class CreateUserService {
     name,
     password,
   }: ICreateUserDTO): Promise<Users> {
-    // some validation here
+    const userVerify = await this.usersRepository.findByEmail(email);
+    if (userVerify) {
+      throw new AppError(400, 'This email is already taken');
+    }
 
     const user = await this.usersRepository.create({ email, name, password });
 

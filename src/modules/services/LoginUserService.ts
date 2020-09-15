@@ -11,6 +11,7 @@ interface IResponse {
   user_id: string;
   token: string;
 }
+
 @injectable()
 class LoginUserService {
   constructor(

@@ -5,7 +5,7 @@ import CreateCourseService from '@modules/services/CreateCourseService';
 import ShowCoursesService from '@modules/services/ShowCoursesService';
 
 class CoursesController {
-  public async show(request: Request, response: Response): Promise<Response> {
+  public async index(request: Request, response: Response): Promise<Response> {
     const showCourses = container.resolve(ShowCoursesService);
     const courses = await showCourses.execute();
 

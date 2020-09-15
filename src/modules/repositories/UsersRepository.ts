@@ -25,6 +25,12 @@ class UsersRepository implements IUsersRepository {
     await this.typeOrmRepository.save(course);
   }
 
+  public async findById(id: string): Promise<Users | undefined> {
+    const user = await this.typeOrmRepository.findOne({ id });
+
+    return user;
+  }
+
   public async findByEmail(email: string): Promise<Users | undefined> {
     const user = await this.typeOrmRepository.findOne({ email });
 
