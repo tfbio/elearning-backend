@@ -18,12 +18,14 @@ class CreateLessonService {
     length,
     description,
     video_id,
+    course_id,
   }: ICreateLessonDTO): Promise<Lessons> {
     const lesson = await this.lessonsRepository.create({
       name,
       length,
       description,
       video_id,
+      course_id,
     });
 
     return lesson;

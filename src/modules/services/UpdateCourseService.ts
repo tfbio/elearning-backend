@@ -8,6 +8,7 @@ import AppError from '@shared/errors/AppError';
 
 interface IUpdateInfoDTO {
   course_id: string;
+  name: string;
   overview: string;
 }
 
@@ -20,6 +21,7 @@ class UpdateCoursesService {
 
   public async execute({
     course_id,
+    name,
     overview,
   }: IUpdateInfoDTO): Promise<Courses> {
     const course = await this.coursesRepository.findCourse(course_id);
@@ -27,7 +29,9 @@ class UpdateCoursesService {
       throw new AppError(404, 'Course not found');
     }
 
+    course.name = name;
     course.overview = overview;
+
     await this.coursesRepository.save(course);
 
     return course;

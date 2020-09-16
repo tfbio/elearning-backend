@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { container } from 'tsyringe';
+// import { container } from 'tsyringe';
 
 // import ShowProfileService from '../../services/ShowProfileService';
 // import UpdateProfileService from '../../services/UpdateProfileService';

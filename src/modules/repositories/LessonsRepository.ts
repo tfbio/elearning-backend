@@ -16,12 +16,14 @@ class LessonsRepository implements ILessonsRepository {
     length,
     description,
     video_id,
+    course_id,
   }: ICreateLessonDTO): Promise<Lessons> {
     const lesson = this.typeOrmRepository.create({
       name,
       length,
       description,
       video_id,
+      course_id,
     });
     await this.typeOrmRepository.save(lesson);
 
@@ -30,6 +32,14 @@ class LessonsRepository implements ILessonsRepository {
 
   public async save(lesson: Lessons): Promise<void> {
     await this.typeOrmRepository.save(lesson);
+  }
+
+  public async find(course_id: string): Promise<Lessons[]> {
+    const lessonsList = await this.typeOrmRepository.find({
+      where: { course_id },
+    });
+
+    return lessonsList;
   }
 }
 

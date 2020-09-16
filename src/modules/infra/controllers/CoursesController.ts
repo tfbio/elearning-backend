@@ -28,10 +28,10 @@ class CoursesController {
 
   public async put(request: Request, response: Response): Promise<Response> {
     const { course_id } = request.params;
-    const { overview } = request.body;
+    const { name, overview } = request.body;
 
     const updateCourse = container.resolve(UpdateCoursesService);
-    const course = await updateCourse.execute({ course_id, overview });
+    const course = await updateCourse.execute({ course_id, name, overview });
 
     return response.status(200).json(course);
   }
