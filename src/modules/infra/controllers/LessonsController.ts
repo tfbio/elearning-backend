@@ -16,7 +16,8 @@ class LessonsController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, length, description, video_id, course_id } = request.body;
+    const { name, length, description, video_id } = request.body;
+    const { course_id } = request.params;
     const createLesson = container.resolve(CreateLessonService);
 
     const lesson = await createLesson.execute({
