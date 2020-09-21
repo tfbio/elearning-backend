@@ -8,8 +8,8 @@ import AppError from '@shared/errors/AppError';
 
 interface IUpdateInfoDTO {
   course_id: string;
+  category: string;
   name: string;
-  overview: string;
 }
 
 @injectable()
@@ -21,8 +21,8 @@ class UpdateCoursesService {
 
   public async execute({
     course_id,
+    category,
     name,
-    overview,
   }: IUpdateInfoDTO): Promise<Courses> {
     const course = await this.coursesRepository.findCourse(course_id);
     if (!course) {
@@ -30,7 +30,7 @@ class UpdateCoursesService {
     }
 
     course.name = name;
-    course.overview = overview;
+    course.category = category;
 
     await this.coursesRepository.save(course);
 

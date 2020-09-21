@@ -3,8 +3,8 @@ import 'reflect-metadata';
 import { inject, injectable } from 'tsyringe';
 import Courses from '@modules/infra/entities/Courses';
 import AppError from '@shared/errors/AppError';
-import ICreateCourseDTO from '../infra/DTOs/ICreateCourseDTO';
-import ICoursesRepository from '../repositories/interfaces/ICoursesRepository';
+import ICreateCourseDTO from '@modules/infra/DTOs/ICreateCourseDTO';
+import ICoursesRepository from '@modules/repositories/interfaces/ICoursesRepository';
 
 @injectable()
 class CreateCourseService {

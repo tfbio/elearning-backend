@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import Chapters from './Chapters';
+import Lessons from './Lessons';
 
 @Entity('modules')
 class Modules {
@@ -17,7 +17,7 @@ class Modules {
   name: string;
 
   @Column()
-  chapters: Chapters;
+  lessons: Lessons;
 
   @CreateDateColumn()
   created_at: string;

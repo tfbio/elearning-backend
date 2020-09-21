@@ -3,8 +3,8 @@ import 'reflect-metadata';
 import { inject, injectable } from 'tsyringe';
 
 import Lessons from '@modules/infra/entities/Lessons';
-import ILessonsRepository from '../repositories/interfaces/IlessonsRepository';
-import ICreateLessonDTO from '../infra/DTOs/ICreateLessonDTO';
+import ILessonsRepository from '@modules/repositories/interfaces/IlessonsRepository';
+import ICreateLessonDTO from '@modules/infra/DTOs/ICreateLessonDTO';
 
 @injectable()
 class CreateLessonService {

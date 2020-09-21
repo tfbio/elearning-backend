@@ -12,10 +12,10 @@ class Courses {
   id: string;
 
   @Column()
-  name: string;
+  category: string;
 
   @Column()
-  overview: string;
+  name: string;
 
   @Column()
   image: string;

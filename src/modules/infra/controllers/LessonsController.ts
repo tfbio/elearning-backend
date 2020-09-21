@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import CreateLessonService from '@modules/services/CreateLessonService';
-import ShowLessonsService from '@modules/services/ShowLessonsService';
+import CreateLessonService from '@modules/services/module_lessons/CreateLessonService';
+import ShowLessonsService from '@modules/services/module_lessons/ShowLessonsService';
 
 class LessonsController {
   public async index(request: Request, response: Response): Promise<Response> {

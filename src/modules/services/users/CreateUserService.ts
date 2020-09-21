@@ -3,8 +3,8 @@ import 'reflect-metadata';
 import { inject, injectable } from 'tsyringe';
 import Users from '@modules/infra/entities/Users';
 import AppError from '@shared/errors/AppError';
-import IUsersRepository from '../repositories/interfaces/IUsersRepository';
-import ICreateUserDTO from '../infra/DTOs/ICreateUserDTO';
+import IUsersRepository from '@modules/repositories/interfaces/IUsersRepository';
+import ICreateUserDTO from '@modules/infra/DTOs/ICreateUserDTO';
 
 @injectable()
 class CreateUserService {
