@@ -1,4 +1,4 @@
-import CreateLessonService from '@modules/services/CreateLessonService';
+import CreateLessonService from '@modules/services/module_lessons/CreateLessonService';
 import AppError from '@shared/errors/AppError';
 import FakeLessonsRepository from './fakes/FakeLessonsRepository';
 
@@ -23,7 +23,7 @@ describe('CreateLesson', () => {
     expect(newCourse).toHaveProperty('id');
   });
 
-  it('should not be able to create two lessons with exact same name in same course', async () => {
+  it('should not be able to create two lessons with exact same name in same module', async () => {
     await createLessonService.execute({
       name: 'new lesson',
       length: 182,

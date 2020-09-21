@@ -1,4 +1,4 @@
-import CreateUserService from '@modules/services/CreateUserService';
+import CreateUserService from '@modules/services/users/CreateUserService';
 import AppError from '@shared/errors/AppError';
 import FakeUsersRepository from './fakes/FakeUsersRepository';
 

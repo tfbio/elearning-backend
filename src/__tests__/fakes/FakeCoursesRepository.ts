@@ -7,12 +7,12 @@ class FakeCoursesRepository implements ICousersRepository {
   private database: Courses[] = [];
 
   public async create({
+    category,
     name,
     image,
-    overview,
   }: ICreateCourseDTO): Promise<Courses> {
     const course = new Courses();
-    Object.assign(course, { id: v4(), name, image, overview });
+    Object.assign(course, { id: v4(), category, name, image });
 
     this.database.push(course);
     return course;

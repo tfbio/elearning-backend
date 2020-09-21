@@ -14,9 +14,9 @@ class CreateCourseService {
   ) {}
 
   public async execute({
+    category,
     name,
     image,
-    overview,
   }: ICreateCourseDTO): Promise<Courses> {
     const courseVerify = await this.coursesRepository.findCourse(name);
 
@@ -25,9 +25,9 @@ class CreateCourseService {
     }
 
     const course = await this.coursesRepository.create({
+      category,
       name,
       image,
-      overview,
     });
 
     return course;
